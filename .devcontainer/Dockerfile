@@ -8,12 +8,7 @@ ARG USER_GID=$USER_UID
 RUN set -eux -o pipefail && \
     dnf install -y curl dnf-utils dnf-plugins-core epel-release git jq ncurses sudo which rsync && \
     dnf config-manager --set-enabled powertools && \ 
-    dnf install -y ca-certificates cmake gcc gcc-c++ glib2-devel
-
-# docker cli
-RUN set -eux -o pipefail && \
-    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
-    yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    dnf install -y ca-certificates cmake gcc gcc-c++ glib2-devel xz
 
 # envs
 ENV INSTALL_PATH "/usr/local"
