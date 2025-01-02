@@ -1,6 +1,50 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/universal:2",
-	"features": {
-		"ghcr.io/devcontainers-extra/features/zig:1": {}
-	}
-}
+    "name": "m2adapter",
+    "build": { 
+      "dockerfile": "./Dockerfile",
+      "context": ".",
+      "target": "user",
+      "args": {
+        "USERNAME": "${localEnv:USER:gopher}"
+      }  
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ziglang.vscode-zig",
+          "eamodio.gitlens",
+          "GitHub.codespaces",
+          "GitHub.copilot",
+          "GitHub.copilot-labs",
+          "ms-vsliveshare.vsliveshare",
+          "ms-azuretools.vscode-docker"
+          ]
+      }
+    },
+    "mounts": [
+      {
+          "type": "bind",
+          "source": "${localEnv:HOME}/.gitconfig",
+          "target": "/root/.gitconfig"
+      },
+      {
+          "type": "bind",
+          "source": "${localEnv:HOME}/.git-credentials",
+          "target": "/root/.git-credentials"
+      },
+      { 
+          "type": "bind",
+          "source": "${localEnv:HOME}/.ssh",
+          "target": "/root/.ssh"
+      },
+      { 
+          "type": "bind",
+          "source": "/var/run/docker.sock",
+          "target": "/var/run/docker.sock"
+      }
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workdir/${localWorkspaceFolderBasename},type=bind,consistency=cached", 
+    "workspaceFolder": "/workdir/${localWorkspaceFolderBasename}",
+    "forwardPorts": []
+  }
+    
