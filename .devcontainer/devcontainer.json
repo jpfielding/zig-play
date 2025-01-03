@@ -5,7 +5,7 @@
       "context": ".",
       "target": "user",
       "args": {
-        "USERNAME": "${localEnv:USER:gopher}"
+        "USERNAME": "${localEnv:USER:ziguana}"
       }  
     },
     "customizations": {
