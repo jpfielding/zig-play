@@ -1,4 +1,4 @@
-onst std = @import("std");
+const std = @import("std");
 
 test "expect addOne adds one to 41" {
 
